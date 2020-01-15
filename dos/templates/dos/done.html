@@ -1,0 +1,11 @@
+    {% extends "dos/index.html" %}
+    {% load i18n %}
+    {% block content %}
+
+        <h2> formulaire soumis </h2>
+        {% for form in form_data %}
+
+            {{ form }}
+
+        {% endfor %}
+    {% endblock %}

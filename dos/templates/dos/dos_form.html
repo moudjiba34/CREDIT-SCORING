@@ -1,0 +1,525 @@
+
+{% extends "dos/index.html" %}
+{% load static %}
+    {% block extrahead %}
+        <script type="text/javascript" src="{% static 'js/jquery.js' %}" ></script>
+
+    {% endblock %}
+    {% load i18n %}
+    {% block content %}
+
+{#     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>#}
+    <script src="{% static 'assets/app/js/jquery-latest.min.js' %}" type="text/javascript"></script>
+
+    <script type="text/javascript">
+      // step 2: run function when clicking radio button
+          $(document).ready(function() {
+              $('#declaration_initiale').hide();
+              $('#declaration').hide();
+
+               $('input[name="declaration_anterieure"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="declaration_anterieure"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="oui" ){
+                         $('#declaration').hide();
+                         $('div#declaration_initiale').show();
+
+                     }
+                     else  if( selected_value ==="non" ){
+                         $('div#declaration_initiale').hide();
+                         $('div#declaration').show();
+                     }
+                 });
+          });
+
+          $(document).ready(function() {
+               $('div#other1').hide();
+                   $('#id_categorie_declarante').on('change', function() {
+                        if (this.value === 'autre' ) {
+                            $('div#other1').show();
+                        }
+                        else {
+                            $('div#other1').hide();
+                        }});
+          });
+
+           $(document).ready(function() {
+                $('div#other2').hide();
+               $('input[name="type_operation"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="type_operation"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="autre" ){
+                         $('div#other2').show();
+                        }
+                        else {
+                            $('div#other2').hide();
+                        }});
+          });
+
+           $(document).ready(function() {
+                $('div#other3').hide();
+               $('input[name="piece_declaration"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="piece_declaration"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="autre" ){
+                         $('div#other3').show();
+                        }
+                        else {
+                            $('div#other3').hide();
+                        }});
+          });
+
+           $(document).ready(function() {
+                $('div#other4').hide();
+               $('input[name="type_infraction"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="type_infraction"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="autre" ){
+                         $('div#other4').show();
+                        }
+                        else {
+                            $('div#other4').hide();
+                        }});
+          });
+
+            $(document).ready(function() {
+                $('div#other5').hide();
+               $('input[name="type_client"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="type_client"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="autre" ){
+                         $('div#other5').show();
+                        }
+                        else {
+                            $('div#other5').hide();
+                        }});
+          });
+
+             $(document).ready(function() {
+                $('div#other6').hide();
+               $('input[name="statut_compte"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="statut_compte"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="autre" ){
+                         $('div#other6').show();
+                        }
+                        else {
+                            $('div#other6').hide();
+                        }});
+          });
+
+              $(document).ready(function() {
+                $('div#other7').hide();
+               $('input[name="identification_individu"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="identification_individu"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="autre" ){
+                         $('div#other7').show();
+                        }
+                        else {
+                            $('div#other7').hide();
+                        }});
+          });
+
+              $(document).ready(function() {
+                $('div#other8').hide();
+               $('input[name="identification_beneficiaire"]').on('change',function(){
+                    // step 3: get selected value
+                    var selected_value = $('input[name="identification_beneficiaire"]:checked').val();
+
+                    // step 4: hide/show dive based on selected_value
+                     if( selected_value ==="autre" ){
+                         $('div#other8').show();
+                        }
+                        else {
+                            $('div#other8').hide();
+                        }});
+          });
+
+    </script>
+        <div class="m-portlet">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon m--hide">
+													<i class="la la-gear"></i>
+												</span>
+												<h3 class="m-portlet__head-text" >
+                                                    <strong>
+                                                        Informations sur le client
+													</strong>
+
+												</h3>
+
+											</div>
+										</div>
+									</div>
+                                          {% comment %}<div class="alert alert-danger alert-dismissible fade show" role="alert">
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+												  {% if form.errors %}
+
+                                                               Corrigez les erreurs suivants s'il vous plait {{ form.errors|pluralize }}.
+
+                                                    {% endif %}
+											</div>
+
+                                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+												 {% for message in messages %}
+                                                        {{ message }}
+                                                {% endfor %}
+											</div>{% endcomment %}
+									<!--begin::Form-->
+									<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="{% url 'dos:ajout_dos' %}" method="POST" id="form-id">
+                                        {% csrf_token %}
+										<div class="m-portlet__body">
+
+
+
+                                            <div class="m-form__section m-form__section--first">
+												<div class="m-form__heading">
+
+                                                        <br>
+														<div class="m-alert m-alert--outline alert alert-info alert-dismissible fade show" role="alert">
+													        <button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
+
+													        Art.72 et 87 Règlement CEMAC ; cette déclaration est strictement confidentielle ; les informations qu’elle contient, ainsi que sa source sont anonymisées et soumises à la loi sur la protection des sources et données.
+												        </div>
+
+												</div>
+
+											</div>
+
+
+                                            <div class="m-form__section m-form__section--first">
+
+                                                <div class="form-group m-form__group row">
+                                                    <div class="col-lg-4">
+													<label class="">
+														Numéro de compte
+													</label> <p></p>
+                                                    {{ form.numero_compte }}
+													{% comment %}<input type="text" class="form-control m-input" placeholder="">{% endcomment %}
+
+
+												</div>
+                                                    <div class="col-lg-4">
+                                                        <label class="">
+                                                            Montant du pret
+                                                        </label> <p></p>
+                                                        {{ form.montant_pret }}
+                                                        {% comment %}<input type="Number" class="form-control m-input" placeholder="">{% endcomment %}
+                                                    </div>
+
+
+												<div class="col-lg-4">
+													<label>Type de client</label>
+                                                    <div class="m-radio-inline">
+
+                                                       {% comment %} {% for choice in form.type_client %}
+                                                                <label class="m-radio m-radio--check-bold">
+                                                                    {{ choice.choice_label }}
+                                                                    <span class="select">{{ choice.tag }}</span>
+                                                                </label>
+                                                            {% endfor %}{% endcomment %}
+                                                        <label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="type_client" value="Physique">
+                                                                Physique
+                                                                <span></span>
+                                                            </label><label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="type_client" value="moral">
+                                                                moral
+                                                                <span></span>
+                                                            </label>
+                                                         <label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="type_compte" value="autre">
+                                                                Autre
+                                                                <span></span>
+                                                            </label>
+                                                    </div>
+                                                    <p></p>
+                                                    <div id="other5">
+                                                                {{ form.autre_type_compte }}
+                                                            </div>
+												</div>
+											</div>
+                                            <div class="form-group m-form__group row">
+
+                                                    <div class="col-lg-4">
+                                                         <label class="">
+                                                            Taux d'interet
+                                                        </label> <p></p>
+                                                        {{ form.taux_interet }}
+                                                       {% comment %} <input type="Number" class="form-control m-input" placeholder="">{% endcomment %}
+
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                         <label class="">
+                                                            ville de naissance
+                                                        </label> <p></p>
+                                                        {{ form.viln }}
+                                                        {% comment %}<input type="text" class="form-control m-input" placeholder="">{% endcomment %}
+                                                    </div>
+                                                <div class="col-lg-4">
+													<label class="">
+														Duree de remboursement
+													</label> <p></p>
+                                                    {{ form.duree_remboursement }}
+													{% comment %}<input type="Number" class="form-control m-input" placeholder="">{% endcomment %}
+
+												</div>
+											</div>
+                                                <div class="form-group m-form__group row">
+
+                                                    <div class="col-lg-4">
+
+													   <label>Autre garantie</label>
+                                                       <div class="m-radio-inline">
+
+                                                       {% comment %} {% for choice in form.autre_garantie %}
+                                                                <label class="m-radio m-radio--check-bold">
+                                                                    {{ choice.choice_label }}
+                                                                    <span class="select">{{ choice.tag }}</span>
+                                                                </label>
+                                                            {% endfor %}{% endcomment %}
+                                                        <label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="autre_garantie" value="Oui">
+                                                                Oui
+                                                                <span></span>
+                                                            </label><label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="autre_garantie" value="Non">
+                                                                Non
+                                                                <span></span>
+                                                            </label>
+                                                       </div>
+
+                                                    </div>
+
+
+                                                    <div class="col-lg-4">
+													   <label>Rythme Remboursement</label>
+                                                         <div class="m-radio-inline">
+
+
+                                                        <label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="rythme_remboursement" value="mensuel">
+                                                                Mensuel
+                                                                <span></span>
+                                                            </label><label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="rythme_remboursement" value="trimestriel">
+                                                                Trimestriel
+                                                                <span></span>
+                                                            </label>
+
+                                                    </div>
+
+												</div>
+                                                <div class="col-lg-4">
+													<label>Type de pret</label>
+                                                    <div class="m-radio-inline">
+
+
+                                                        <label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="type_pret" value="acqui">
+                                                                Acqui
+                                                                <span></span>
+                                                            </label><label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="type_pret" value="const">
+                                                                Const
+                                                                <span></span>
+                                                            </label>
+                                                         <label class="m-radio m-radio--solid">
+                                                                <input type="radio" name="type_pret" value="cons">
+                                                                Cons
+                                                                <span></span>
+                                                            </label>
+                                                    </div>
+                                                    <p></p>
+                                                    <div id="other5">
+                                                                {{ form.autre_type_client }}
+                                                            </div>
+												</div>
+											</div>
+											</div>
+
+                                              <div class="form-group m-form__group row">
+                                                    <div class="col-lg-4">
+                                                        <label class="">
+                                                            Date d’ouverture
+                                                        </label> <p></p>
+                                                         <div class="input-group date">
+                                                            {{ form.date_ouverture }}
+
+                                                         </div>
+                                                        {% comment %}<input type="date" class="form-control m-input" placeholder="">{% endcomment %}
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                         <label class="">
+                                                            Date de naissance ou date de creation
+                                                        </label> <p></p>
+                                                         <div class="input-group date">
+                                                            {{ form.date_naissance}}
+
+                                                         </div>
+                                                        {% comment %}<input type="date" class="form-control m-input" placeholder="">{% endcomment %}
+
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                         <label class="">
+                                                            Statut du compte au moment de la demande de pret
+                                                        </label> <p></p>
+                                                        <div class="m-radio-list">
+                                                           {% comment %} {% for choice in form.statut_compte %}
+																	<label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="example_5_1" value="Versement espèces">
+																		Versement espèces
+                                                                          {{ choice.choice_label }}
+                                                                          <span class="select">{{ choice.tag }}</span> {# Or any other type you want. #}
+																		<span></span>
+																	</label>
+                                                        {% endfor %}{% endcomment %}
+																	<label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="statut_compte" value="Actif">
+																		Actif
+																		<span></span>
+																	</label>
+																	<label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="statut_compte" value="Inactif">
+                                                                        Inactif
+																		<span></span>
+																	</label>
+
+																</div>
+                                                        <p></p>
+                                                        <div id="other6">
+                                                                {{ form.autre_statut_compte }}
+                                                            </div>
+                                                    </div>
+											</div>
+                                            </div>
+                                            <div class="m-form__seperator m-form__seperator--dashed"></div>
+
+                                            <div class="m-form__section m-form__section--first">
+
+
+
+
+
+											</div>
+                                                <div class="form-group m-form__group row">
+
+                                                    <div class="col-lg-4">
+                                                         <label class="">
+                                                            Proféssion ou Métier
+                                                        </label> <p></p>
+                                                        {{ form.Profession }}
+                                                       {% comment %} <input type="text" class="form-control m-input" placeholder="">{% endcomment %}
+
+                                                    </div>
+                                                    <div class="col-lg-4">
+                                                         <label class="">
+                                                           Document Identification
+                                                        </label> <p></p>
+
+                                                          <div class="m-radio-list">
+                                                              <label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="identification_individu"  value="Carte identité nationale">
+                                                                Carte d’identité nationale
+																		<span></span>
+																	</label>
+																	<label class="m-radio m-radio--check-bold">
+																		 <input type="radio" name="identification_individu" value="Passeport">
+                                                                Passeport
+																		<span></span>
+																	</label>
+																	<label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="identification_individu" value="Certificat de naissance">
+                                                                Certificat de naissance
+																		<span></span>
+																	</label>
+																	<label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="identification_individu"  value="Titre de séjour">
+                                                                Titre de séjour
+																		<span></span>
+																	</label>
+                                                              <label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="identification_individu" value="Ninea et Rc">
+                                                                Ninea et Rc
+																		<span></span>
+																	</label>
+
+																	<label class="m-radio m-radio--check-bold">
+																		 <input type="radio" name="identification_individu" value="autre">
+                                                                Autre
+																		<span></span>
+																	</label>
+
+
+                                                              {% comment %} {% for choice in form.identification_individu %}
+																	<label class="m-radio m-radio--check-bold">
+																		<input type="radio" name="example_5_1" value="Versement espèces">
+																		Versement espèces
+                                                                          {{ choice.choice_label }}
+                                                                          <span class="select">{{ choice.tag }}</span> {# Or any other type you want. #}
+																		<span></span>
+																	</label>
+                                                        {% endfor %}{% endcomment %}
+																</div>
+                                                        <p></p>
+                                                            <div id="other7">
+                                                                {{ form.autre_type_identification_individu }}
+                                                            </div>
+                                                    </div>
+											</div>
+
+
+
+
+
+
+
+                                            <div class="m-form__seperator m-form__seperator--dashed"></div>
+
+
+
+
+										</div>
+
+										<div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+											<div class="m-form__actions m-form__actions--solid">
+												<div class="row">
+													<div class="col-lg-5"></div>
+
+														<button type="submit" class="btn btn-primary">
+															Predire
+														</button>
+														<button type="reset" class="btn btn-secondary">
+															Annuler
+														</button>
+
+												</div>
+											</div>
+										</div>
+									</form>
+									<!--end::Form-->
+								</div>
+
+    {% endblock %}
+
+
+
+
