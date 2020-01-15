@@ -37,7 +37,7 @@ pytz==2019.1
 pyxdg==0.25
 PyYAML==3.12
 reportlab==3.4.0
-requests==2.18.1
+requests==2.20.0
 SecretStorage==2.3.1
 simplejson==3.11.1
 six==1.10.0
