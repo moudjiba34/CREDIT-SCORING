@@ -13,8 +13,6 @@ class DosForm(forms.Form):
         ('non', 'non'),
     )
 
-
-
     type_client = (
         ('Physique', 'Physique'),
         ('moral', 'moral'),
@@ -64,8 +62,6 @@ class DosForm(forms.Form):
         ('Autre', 'Autre')
     )
 
-
-
     class Meta:
         # Provide an association between the ModelForm and a model
         model = Dos
@@ -80,7 +76,6 @@ class FormStepOne(forms.Form):
         ('oui', 'oui'),
         ('non', 'non'),
     )
-
 
 
 class FormStepThree(forms.Form):
@@ -127,17 +122,6 @@ class FormStepFour(forms.Form):
         ('Non', 'Non')
     )
 
-    statut_compte = (
-        ('Actif', 'Actif'),
-        ('Inactif', 'Inactif'),
-
-    )
-    status_garantie = (
-        ('False', 'False'),
-        ('True', 'True')
-    )
-
-    type_pret = forms.ChoiceField(choices=motif_pret)
     numero_compte = forms.CharField(max_length=250)
     type_client = forms.ChoiceField(choices=type_client)
     montant_pret = forms.FloatField()
@@ -162,5 +146,3 @@ class FormStepFive(forms.Form):
         ('Pays de citoyenneté', 'Pays de citoyenneté'),
         ('Autre', 'Autre')
     )
-
-
