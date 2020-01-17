@@ -5,10 +5,15 @@ from dos.script_one_client import predict
 # Create your models here.
 
 class Dos(models.Model):
-
     status_garantie = (
         ('False', 'False'),
         ('True', 'True')
+    )
+
+    type_client = (
+        ('Physique', 'Physique'),
+        ('moral', 'moral'),
+        ('Autre', 'Autre')
     )
 
     type_compte = (
@@ -42,12 +47,8 @@ class Dos(models.Model):
         ('Autre', 'Autre')
     )
 
-
-
-    type_pret = models.CharField(max_length=250, choices=motif_pret)
     numero_compte = models.CharField(max_length=250)
-    type_client = models.CharField(max_length=250, choices=type_compte)
-    montant_pret = models.FloatField()
+    montant_pret = models.CharFieldField()
     taux_interet = models.CharField(max_length=10)
     viln = models.CharField(max_length=250)
     date_ouverture = models.DateField()
@@ -55,15 +56,44 @@ class Dos(models.Model):
     statut_compte = models.CharField(max_length=250, choices=statut_compte)
     autre_garantie = models.CharField(max_length=10, choices=status_garantie)
     duree_remboursement = models.CharField(max_length=10)
-    rythme_remboursement = models.CharField(max_length=10, choices=statut_remboursement)
+    rythme_remboursement = models.CharField(max_length=20, choices=statut_remboursement)
     Profession = models.CharField(max_length=20)
 
-   ## def prediction(self) {
-      ##  print('call prediction functions here with data provided by this object ')
-   ## }
+    def prediction(self):
+        print('call prediction functions here with data provided by this object')
+        client_id = self.numero_compte
+        new_client_data = {
+            "client_id": self.numero_compte,
+            "DNA": self.date_naissance,
+            "year_DAN": self.date_naissance,
+            "Typrt_Crédits Immobiliers ": self.motif_pret,
+            "Typrt_Crédits Immobiliers": self.motif_pret,
+            "RYTHREM_Mensuel": self.rythme_remboursement,
+            "RYTHREM_Trimestriel": self.rythme_remboursement,
+            "AUTGAR_False": self.autre_garantie,
+            "AUTGAR_True": self.autre_garantie,
+            "ID_INSTANCE_WORKFLOW": self.numero_compte,
+            "Etat": "Etat",
+            "ID'": self.numero_compte,
+            "RYTHREM'": self.rythme_remboursement,
+            "AUTGAR": self.autre_garantie,
+            "Typrt": self.motif_pret,
+            "Initiateur": "Initiateur",
+            "Date_DerniereExecution": "Date_DerniereExecution",
+            "DMO": "DMO",
+            "DATDMDE": "DATDMDE",
+            "ContentType": "ContentType",
+            "Status": self.statut_compte,
+            "EtatInterne": self.type_compte,
+            "ibelleItem": "ibelleItem",
+            "Montant": self.montant_pret,
+            "Taux": self.taux_interet,
 
-    # identification personnelle
+        }
+        return predict(client_id, new_client_data)
 
-    # identification beneficiaire
+# identification personnelle
 
-    ##identification_beneficiaire = models.CharField(max_length=250, choices=type_identification)
+# identification beneficiaire
+
+##identification_beneficiaire = models.CharField(max_length=250, choices=type_identification)
